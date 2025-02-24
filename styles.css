@@ -1,0 +1,130 @@
+/* CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+/* CSS Reset */
+
+/* Body */
+body {
+  font-family: "Ubuntu", serif;
+  background-color: #031e4f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Quiz Container*/
+.quiz-container {
+  background-color: #fefefe;
+  padding: 1rem;
+  border-radius: 1rem;
+  width: 40rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Quiz Titles */
+h1 {
+  color: #031e4f;
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+}
+
+h2 {
+  margin-top: 1rem;
+  color: #031e4f;
+  margin-bottom: 0.25rem;
+  font-size: 1.5rem;
+}
+
+/* Quiz List Options*/
+.option {
+  border: 1px solid #031e4f;
+  padding: 0.25rem 1rem;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  border-radius: 0.25rem;
+  transition: 0.25s;
+}
+
+.option:hover {
+  background-color: #000805;
+  color: #fefefe;
+}
+
+/* Next Button */
+.next-button {
+  margin: 0 auto;
+  padding: 0.5rem 2.5rem;
+  color: #031e4f;
+  background-color: transparent;
+  border-radius: 0.25rem;
+  border: 2px solid #031e4f;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: 0.25s;
+}
+
+.next-button:hover {
+  background-color: #031e4f;
+  color: #fefefe;
+}
+
+/* Media Query */
+@media screen and (max-width: 40rem) {
+  .quiz-container {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    justify-content: space-between;
+    text-align: center;
+  }
+}

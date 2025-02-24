@@ -13,7 +13,7 @@ let option3 = document.querySelector(".jsOption3");
 let option4 = document.querySelector(".jsOption4");
 let playAgain = document.querySelector(".jsPlayAgain");
 
-// Displays question on page starting on question 1
+// Update quiz question function and display quiz on page load starting on question 1
 let questionsIndex = 0;
 displayQuestion();
 function displayQuestion() {
@@ -27,23 +27,14 @@ function displayQuestion() {
 
 // Next button moves to next quiz question if an answer has been chosen
 nextButton.addEventListener("click", () => {
+  // Only runs if answer has been chosen and hasChosen equals true
   if (hasChosen) {
     if (questionsIndex === questions.length - 2) {
       nextButton.style.visibility = "hidden";
     }
     questionsIndex++;
-    displayQuestion();
-    hasChosen = false;
-    options.forEach((option) => {
-      option.style.cursor = "pointer";
-      option.classList.remove("correct", "wrong");
-      option.classList.add("hover");
-      questionResult.textContent = "";
-      questionResult.classList.remove(
-        "question-result-correct",
-        "question-result-wrong"
-      );
-    });
+    setToInitial()
+    // If no answer has been given, display a message for 1 second
   } else {
     questionResult.textContent = "Please choose an answer";
     questionResult.classList.add("question-result-wrong");
@@ -54,17 +45,20 @@ nextButton.addEventListener("click", () => {
   }
 });
 
-// If hasChosen is false then let the user make a choice/alert the result
+// Quiz question/answer functionality
 let hasChosen = false;
 let score = 0;
 options.forEach((option) => {
   option.addEventListener("click", () => {
+    // Only runs if hasChosen is false
     if (!hasChosen) {
+      // Highlights answer/displays message/updates score if user is correct
       if (option.textContent === questions[questionsIndex].correctAnswer) {
         score++;
         option.classList.add("correct");
         questionResult.textContent = "Correct answer";
         questionResult.classList.add("question-result-correct");
+        // Highlights user answer and correct answer/displays message if user is incorrect
       } else {
         option.classList.add("wrong");
         questionResult.textContent = "Wrong answer";
@@ -75,24 +69,23 @@ options.forEach((option) => {
           }
         });
       }
+      // Only executes after answering last question
       if (questionsIndex === questions.length - 1) {
+        // Change next button to play again button/display quiz score
         nextButton.classList.add("hidden");
         playAgain.classList.remove("hidden");
         questionNumber.textContent = `You scored: ${score} out of 10`;
+        // After clicking play again button, reset game and page back to initial state
         playAgain.addEventListener("click", () => {
+          score = 0;
           questionsIndex = 0;
-          displayQuestion();
-          questionResult.textContent = "";
           playAgain.classList.add("hidden");
           nextButton.classList.remove("hidden");
           nextButton.style.visibility = "visible";
-          options.forEach((option) => {
-            option.classList.add("hover");
-            option.classList.remove("correct", "wrong");
-            hasChosen = false;
-          });
+          setToInitial()
         });
       }
+      // After answer is chosen and regardless of right or wrong answer, remove hover class/change cursor/make hasChosen true so options cant be interacted with until next question
       options.forEach((option) => {
         option.classList.remove("hover");
         option.style.cursor = "default";
@@ -101,3 +94,19 @@ options.forEach((option) => {
     }
   });
 });
+
+// Sets back to a default state on every new question and new round
+function setToInitial() {
+  displayQuestion();
+  questionResult.textContent = "";
+  questionResult.classList.remove(
+    "question-result-correct",
+    "question-result-wrong"
+  );
+  hasChosen = false;
+  options.forEach((option) => {
+    option.style.cursor = "pointer";
+    option.classList.remove("correct", "wrong");
+    option.classList.add("hover");
+  });
+}

@@ -64,11 +64,13 @@ body {
 /* Quiz Container*/
 .quiz-container {
   background-color: #fefefe;
-  padding: 1rem;
+  padding-inline: 1rem;
+  padding-block: 3rem;
   border-radius: 1rem;
   width: 40rem;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 /* Quiz Titles */
@@ -92,10 +94,10 @@ h2 {
   cursor: pointer;
   margin-bottom: 0.5rem;
   border-radius: 0.25rem;
-  transition: 0.25s;
+  transition: 0.1s;
 }
 
-.option:hover {
+.hover:hover {
   background-color: #000805;
   color: #fefefe;
 }
@@ -109,13 +111,51 @@ h2 {
   border-radius: 0.25rem;
   border: 2px solid #031e4f;
   cursor: pointer;
-  margin-top: 0.5rem;
+  margin-top: 2rem;
   transition: 0.25s;
 }
 
 .next-button:hover {
   background-color: #031e4f;
   color: #fefefe;
+}
+
+/* Question Number */
+.question-number {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  width: fit-content;
+  top: 1.25rem;
+  color: #031e4f;
+}
+
+/* Option BG Colors */
+.correct {
+background-color: #668925;
+}
+
+.wrong {
+background-color: #E33E33;
+}
+
+/* Question Result */
+.question-result {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  width: fit-content;
+  bottom: 0.75rem;
+}
+
+.question-result-correct {
+  color: #668925;
+}
+
+.question-result-wrong {
+  color: #E33E33;
 }
 
 /* Media Query */

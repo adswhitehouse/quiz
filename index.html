@@ -17,19 +17,21 @@
 <body>
   <section class="quiz-container">
     <div>
+      <p class="question-number jsQuestionNumber"></p>
       <h1>Simple Quiz</h1>
       <hr>
     </div>
     <div>
-      <h2>Which is the largest animal in the world?</h2>
+      <h2 class="jsQuestionTitle"></h2>
       <ul role="list">
-        <li class="option">Shark</li>
-        <li class="option">Blue Whale</li>
-        <li class="option">Elephant</li>
-        <li class="option">Giraffe</li>
+        <li class="option hover jsOption1 jsOption"></li>
+        <li class="option hover jsOption2 jsOption"></li>
+        <li class="option hover jsOption3 jsOption"></li>
+        <li class="option hover jsOption4 jsOption"></li>
       </ul>
     </div>
-    <button class="next-button">Next</button>
+    <button class="next-button jsNextButton">Next</button>
+    <p class="question-result jsQuestionResult"></p>
   </section>
   <script type="module" src="./script.js"></script>
 </body>

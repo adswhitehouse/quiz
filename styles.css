@@ -105,7 +105,8 @@ h2 {
 /* Next Button */
 .next-button {
   margin: 0 auto;
-  padding: 0.5rem 2.5rem;
+  padding-block: 0.5rem;
+  width: 7rem;
   color: #031e4f;
   background-color: transparent;
   border-radius: 0.25rem;
@@ -113,6 +114,7 @@ h2 {
   cursor: pointer;
   margin-top: 2rem;
   transition: 0.25s;
+  transition-property: color, background-color;
 }
 
 .next-button:hover {
@@ -133,11 +135,11 @@ h2 {
 
 /* Option BG Colors */
 .correct {
-background-color: #668925;
+  background-color: #668925;
 }
 
 .wrong {
-background-color: #E33E33;
+  background-color: #e33e33;
 }
 
 /* Question Result */
@@ -155,7 +157,32 @@ background-color: #E33E33;
 }
 
 .question-result-wrong {
-  color: #E33E33;
+  color: #e33e33;
+}
+
+/* Play Again Button */
+.play-again {
+  margin: 0 auto;
+  padding-block: 0.5rem;
+  width: 7rem;
+  color: #031e4f;
+  background-color: transparent;
+  border-radius: 0.25rem;
+  border: 2px solid #031e4f;
+  cursor: pointer;
+  margin-top: 2rem;
+  transition: 0.25s;
+  transition-property: color, background-color;
+}
+
+.play-again:hover {
+  background-color: #031e4f;
+  color: #fefefe;
+}
+
+/* Hide Button */
+.hidden {
+  display: none;
 }
 
 /* Media Query */

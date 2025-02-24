@@ -1,3 +1,4 @@
+// Import questions data
 import { questions } from "./quiz.js";
 
 // Variables
@@ -10,6 +11,7 @@ let option1 = document.querySelector(".jsOption1");
 let option2 = document.querySelector(".jsOption2");
 let option3 = document.querySelector(".jsOption3");
 let option4 = document.querySelector(".jsOption4");
+let playAgain = document.querySelector(".jsPlayAgain");
 
 // Displays question on page starting on question 1
 let questionsIndex = 0;
@@ -26,6 +28,9 @@ function displayQuestion() {
 // Next button moves to next quiz question if an answer has been chosen
 nextButton.addEventListener("click", () => {
   if (hasChosen) {
+    if (questionsIndex === questions.length - 2) {
+      nextButton.style.visibility = "hidden";
+    }
     questionsIndex++;
     displayQuestion();
     hasChosen = false;
@@ -49,7 +54,7 @@ nextButton.addEventListener("click", () => {
   }
 });
 
-// If hasChosen is false then let the user make a choice
+// If hasChosen is false then let the user make a choice/alert the result
 let hasChosen = false;
 let score = 0;
 options.forEach((option) => {
@@ -68,6 +73,24 @@ options.forEach((option) => {
           if (option.textContent === questions[questionsIndex].correctAnswer) {
             option.classList.add("correct");
           }
+        });
+      }
+      if (questionsIndex === questions.length - 1) {
+        nextButton.classList.add("hidden");
+        playAgain.classList.remove("hidden");
+        questionNumber.textContent = `You scored: ${score} out of 10`;
+        playAgain.addEventListener("click", () => {
+          questionsIndex = 0;
+          displayQuestion();
+          questionResult.textContent = "";
+          playAgain.classList.add("hidden");
+          nextButton.classList.remove("hidden");
+          nextButton.style.visibility = "visible";
+          options.forEach((option) => {
+            option.classList.add("hover");
+            option.classList.remove("correct", "wrong");
+            hasChosen = false;
+          });
         });
       }
       options.forEach((option) => {

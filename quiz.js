@@ -30,7 +30,7 @@ export let questions = [
     id: 4,
     title: "What's the national animal of Australia?",
     option1: "Tasmanian devil",
-    option2: "Red Kangaroo",
+    option2: "Red kangaroo",
     option3: "Platypus",
     option4: "Emu",
     correctAnswer: "Red kangaroo",

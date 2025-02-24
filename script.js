@@ -23,21 +23,40 @@ function displayQuestion() {
   questionNumber.textContent = `Question ${questionsIndex + 1} of 10`;
 }
 
-// Next button moves to next quiz question
-// let hasChosen = false;
-// function nextQuestion() {
-//   if (hasChosen) {
-//     questionsIndex++;
-//     displayQuestion();
-//   }
-// }
+// Next button moves to next quiz question if an answer has been chosen
+nextButton.addEventListener("click", () => {
+  if (hasChosen) {
+    questionsIndex++;
+    displayQuestion();
+    hasChosen = false;
+    options.forEach((option) => {
+      option.style.cursor = "pointer";
+      option.classList.remove("correct", "wrong");
+      option.classList.add("hover");
+      questionResult.textContent = "";
+      questionResult.classList.remove(
+        "question-result-correct",
+        "question-result-wrong"
+      );
+    });
+  } else {
+    questionResult.textContent = "Please choose an answer";
+    questionResult.classList.add("question-result-wrong");
+    setTimeout(() => {
+      questionResult.textContent = "";
+      questionResult.classList.remove("question-result-wrong");
+    }, 1000);
+  }
+});
 
 // If hasChosen is false then let the user make a choice
 let hasChosen = false;
+let score = 0;
 options.forEach((option) => {
   option.addEventListener("click", () => {
     if (!hasChosen) {
       if (option.textContent === questions[questionsIndex].correctAnswer) {
+        score++;
         option.classList.add("correct");
         questionResult.textContent = "Correct answer";
         questionResult.classList.add("question-result-correct");
@@ -53,6 +72,7 @@ options.forEach((option) => {
       }
       options.forEach((option) => {
         option.classList.remove("hover");
+        option.style.cursor = "default";
       });
       hasChosen = true;
     }
